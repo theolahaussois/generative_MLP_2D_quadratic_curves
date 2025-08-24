@@ -11,7 +11,6 @@ Le modèle pré-entraîné est inclus pour permettre des inférences rapides san
 |--------------------------|-------------|
 | `MLP_quadratique.py`     | Définition du dataset, du MLP et des fonctions d’entraînement et d’inférence |
 | `main.py`                | Script CLI pour lancer l’entraînement ou la prédiction |
-| `images/`                | Images générées à partir des paramètres de courbes |
 | `predictions/`           | Dossier où sont sauvegardées les images générées par le modèle |
 | `params.xlsx`            | Paramètres `(a, b, c)` pour générer les courbes |
 | `mlp_weights.pth`        | Poids du modèle pré-entraîné (prêt à l’usage) |
