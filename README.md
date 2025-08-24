@@ -17,6 +17,6 @@ This project implements a **Multi-Layer Perceptron (MLP)** to generate images of
 3. Predict new curves from given `(a, b, c)`  
 
 Example:
-```python
-from MLP_quadratique import main_inference
-main_inference(4, 8, 3, output_folder="predictions")
+
+python main.py --coeffs 4 8 3 --out predictions
+
