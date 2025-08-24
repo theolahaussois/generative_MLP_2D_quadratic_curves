@@ -1,30 +1,59 @@
-#  Generative MLP 2D Quadratic Curves
+# Generative MLP 2D Quadratic Curves
 
-Ce repository contient un projet de génération et reconstruction d’images de courbes quadratiques 2D à l’aide d’un **MLP (Multi-Layer Perceptron)**.  
-Le modèle pré-entraîné est fourni pour exécuter des inférences rapides sans réentraînement.
-
----
-
-##  Contenu du dépôt
-
-| Fichier / Dossier | Description |
-|------------------|-------------|
-| `MLP_quadratique.py` | Module Python principal avec la définition du dataset, du MLP, fonctions d’entraînement et d’inférence |
-| `main.py` | Script CLI pour lancer entraînement ou prédiction |
-| `images/` | Images générées à partir des paramètres de courbes |
-| `predictions/` | Dossier où les images générées par le modèle sont sauvegardées |
-| `params.xlsx` | Fichier Excel contenant les paramètres `(a, b, c)` pour générer les courbes |
-| `mlp_weights.pth` | Poids du modèle entraîné (prêt à l’usage) |
-| `mlp_checkpoints.pth` | Checkpoints d’entraînement optionnels |
-| `__pycache__/` | Cache Python (à ignorer dans le git push) |
+Ce projet permet de **générer et reconstruire des images de courbes quadratiques 2D** à l’aide d’un **MLP (Multi-Layer Perceptron)** en PyTorch.  
+Le modèle pré-entraîné est inclus pour permettre des inférences rapides sans réentraînement.
 
 ---
 
-##  Installation
+## Contenu du dépôt
 
+| Fichier / Dossier        | Description |
+|--------------------------|-------------|
+| `MLP_quadratique.py`     | Définition du dataset, du MLP et des fonctions d’entraînement et d’inférence |
+| `main.py`                | Script CLI pour lancer l’entraînement ou la prédiction |
+| `images/`                | Images générées à partir des paramètres de courbes |
+| `predictions/`           | Dossier où sont sauvegardées les images générées par le modèle |
+| `params.xlsx`            | Paramètres `(a, b, c)` pour générer les courbes |
+| `mlp_weights.pth`        | Poids du modèle pré-entraîné (prêt à l’usage) |
+| `mlp_checkpoints.pth`    | Checkpoints d’entraînement intermédiaires |
+| `__pycache__/`           | Cache Python |
+
+---
+
+## Installation
+
+Cloner le dépôt et installer les dépendances :
 
 ```bash
 git clone https://github.com/theolahaussois/generative_MLP_2D_quadratic_curves.git
 cd generative_MLP_2D_quadratic_curves
-pip install numpy pandas matplotlib pillow tqdm scikit-learn torch torchvision
-python main.py --predict --coeffs 4 8 3 --out predictions
+pip install -r requirements.txt
+```
+
+---
+
+## Utilisation
+
+```bash
+python main.py infer \
+    --checkpoint mlp_weights.pth \
+    --coeffs 4 8 3 \
+    --out predictions/prediction.png
+```
+
+
+---
+
+## Entraînement du modèle
+
+```bash
+python main.py train \
+    --generate \
+    --n_samples 2000 \
+    --img_size 64 \
+    --model mlp \
+    --epochs 10 \
+    --batch_size 32 \
+    --lr 1e-3 \
+    --checkpoint mlp_weights.pth
+```
