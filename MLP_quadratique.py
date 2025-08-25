@@ -48,18 +48,25 @@ class MLP(nn.Module):
 
 # ===================== Image generation =====================
 def generate_image(a, b, c, idx, folder="images"):
+    import os, numpy as np, matplotlib.pyplot as plt
     os.makedirs(folder, exist_ok=True)
+    
     x = np.linspace(-10, 10, 100)
     y = a * x**2 + b * x + c
-    plt.figure(figsize=(2, 2), dpi=32)
+    
+    # Figure de 64x64 pixels
+    plt.figure(figsize=(2, 2), dpi=32)  # 2*32 = 64 pixels
     plt.plot(x, y, color='black', linewidth=3)
     plt.ylim(-200, 200)
     plt.axis('off')
     plt.tight_layout()
+    
     path = os.path.join(folder, f"img_{idx:03}.png")
-    plt.savefig(path, bbox_inches='tight', pad_inches=0)
+    plt.savefig(path)
     plt.close()
+    
     return path
+
 
 def generate_excel(param_list, path='params.xlsx'):
     df = pd.DataFrame(param_list, columns=['a', 'b', 'c'])

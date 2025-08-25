@@ -16,6 +16,7 @@ Le modèle pré-entraîné est inclus pour permettre des inférences rapides san
 | `mlp_checkpoints.pth`    | Checkpoints d’entraînement intermédiaires |
 | `__pycache__/`           | Cache Python |
 
+
 ---
 
 ## Installation
