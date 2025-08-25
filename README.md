@@ -33,25 +33,11 @@ pip install -r requirements.txt
 ## Utilisation
 
 ```bash
-python main.py infer \
-    --checkpoint mlp_weights.pth \
-    --coeffs 4 8 3 \
-    --out predictions/prediction.png
+python main.py --coeffs 4 8 3 --out predictions/
 ```
 
 
 ---
 
-## Entraînement du modèle
-
-```bash
-python main.py train \
-    --generate \
-    --n_samples 2000 \
-    --img_size 64 \
-    --model mlp \
-    --epochs 10 \
-    --batch_size 32 \
-    --lr 1e-3 \
-    --checkpoint mlp_weights.pth
+eckpoint mlp_weights.pth
 ```
